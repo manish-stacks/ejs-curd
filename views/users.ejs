@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Users</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% users.forEach(user => { %>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-2"><%= user.name %></h2>
+                    <p class="text-gray-700 mb-4"><%= user.email %></p>
+                    <a href="/edit-user/<%= user._id %>" class="bg-yellow-500 text-white py-2 px-4 rounded mr-2">Edit</a>
+                    <form action="/delete-user/<%= user._id %>" method="POST" class="inline">
+                        <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded">Delete</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+        <a href="/create-user" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded">Create User</a>
+    </div>
+</body>
+</html>
